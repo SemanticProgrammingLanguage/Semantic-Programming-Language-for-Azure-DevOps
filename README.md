@@ -1,5 +1,8 @@
 # Semantic Azure DevOps Hybrid Highlighting
 ![](https://vsmarketplacebadges.dev/version/semanticprogramminglanguage.semantic-programminglanguage.svg)
+
+https://marketplace.visualstudio.com/items?itemName=semanticprogramminglanguage.semantic-programminglanguage
+
 ## Build
 
 Open PowerShell in this folder and run:
