@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Semantic",
+  "scopeName": "source.semantic",
+  "fileTypes": [
+    "se",
+    "sp"
+  ],
+  "patterns": [
+    {"include":"#comments"},
+    {"include":"#header"},
+    {"include":"#strings"},
+    {"include":"#references"},
+    {"include":"#keywords"},
+    {"include":"#constants"},
+    {"include":"#numbers"},
+    {"include":"#field-keys"},
+    {"include":"#operators"}
+  ],
+  "repository": {
+    "comments": {"patterns":[{"name":"comment.line.number-sign.semantic","match":"#.*$"}]},
+    "header": {"patterns":[{"name":"meta.header.semantic","match":"^\\s*(se|sp)\\s+(\\d+)\\s*$","captures":{"1":{"name":"keyword.control.header.semantic"},"2":{"name":"constant.numeric.version.semantic"}}}]},
+    "strings": {"patterns":[{"name":"string.quoted.double.semantic","begin":"\"","end":"\"","patterns":[{"name":"constant.character.escape.semantic","match":"\\\\(?:[\"\\\\/bfnrt]|u[0-9A-Fa-f]{4})"}]}]},
+    "references": {"patterns":[{"name":"variable.other.reference.node.semantic","match":"%\\d+"},{"name":"variable.other.reference.type.semantic","match":"@\\d+"}]},
+    "keywords": {"patterns":[{"name":"keyword.control.semantic","match":"\\b(?:program|object|list|ranges|types|type|scopes|scope|nodes|node|relations)\\b"}]},
+    "constants": {"patterns":[{"name":"constant.language.semantic","match":"\\b(?:true|false|null|unknown)\\b"}]},
+    "numbers": {"patterns":[{"name":"constant.numeric.semantic","match":"(?<![A-Za-z0-9_.-])[-+]?(?:0[xX][0-9A-Fa-f]+|(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][-+]?\\d+)?)(?![A-Za-z0-9_.-])"},{"name":"constant.numeric.range.semantic","match":"\\b\\d+-\\d+\\b"}]},
+    "field-keys": {"patterns":[{"name":"variable.other.member.semantic","match":"\\b(?:field\\.)?[A-Za-z_][A-Za-z0-9_.-]*(?=\\s*=)"},{"name":"variable.other.member.compact.semantic","match":"\\bf\\d+(?=\\s*=)"}]},
+    "operators": {"patterns":[{"name":"keyword.operator.relation.semantic","match":"->"},{"name":"keyword.operator.assignment.semantic","match":"="},{"name":"punctuation.separator.key-value.semantic","match":":"},{"name":"punctuation.definition.block.semantic","match":"[{}\\[\\]]"}]}
+  }
+}
